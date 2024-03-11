@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detailed Gallery</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lg-thumbnail.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <main>
+      <section class="gallery_preview_header">
+        <h1>Name of the Event</h1>
+        <p>Click on the image to view full size image.</p>
+      </section>
+
+      <div id="gallery-container" class="grid">
+
+        <!--
+            The following code is a template for the gallery items.
+            <a
+                class="gallery-item"
+                data-src="<image-url>"
+                data-sub-html="> <text-to-show-on-lightbox> </h4>"
+            >
+                <img class="img-fluid" src="<image-url>" />
+            </a>
+        -->
+
+        <a
+          class="gallery-item"
+          data-src="/images/1.jpg"
+          data-sub-html="<h4>Phto of international board meeting outside of the office.</h4>"
+        >
+          <img class="img-fluid" src="/images/1.jpg" />
+        </a>
+        <a
+          class="gallery-item"
+          data-src="/images/2.jpg"
+          data-sub-html="<h4>Phto of international board meeting outside of the office.</h4>"
+        >
+          <img class="img-fluid" src="/images/2.jpg" />
+        </a>
+
+        <a
+          class="gallery-item"
+          data-src="/images/5.avif"
+          data-sub-html="<h4>Phto of international board meeting outside of the office.</h4>"
+        >
+          <img class="img-fluid" src="/images/5.avif" />
+        </a>
+
+        <a
+          class="gallery-item"
+          data-src="/images/3.jpg"
+          data-sub-html="<h4>Phto of international board meeting outside of the office.</h4>"
+        >
+          <img class="img-fluid" src="/images/3.jpg" />
+        </a>
+        <a
+          class="gallery-item"
+          data-src="/images/4.jpg"
+          data-sub-html="<h4>Phto of international board meeting outside of the office.</h4>"
+        >
+          <img class="img-fluid" src="/images/4.jpg" />
+        </a>
+        <a
+          class="gallery-item"
+          data-src="/images/5.avif"
+          data-sub-html="<h4>Phto of international board meeting outside of the office.</h4>"
+        >
+          <img class="img-fluid" src="/images/5.avif" />
+        </a>
+      </div>
+    </main>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
+
+  <script>
+    const galleryContainer = document.getElementById("gallery-container");
+
+    const customButtons = `<button type="button" id="lg-toolbar-prev" aria-label="Previous slide" class="lg-toolbar-prev lg-icon">  </button><button type="button" id="lg-toolbar-next" aria-label="Next slide" class="lg-toolbar-next lg-icon">  </button>`;
+
+    galleryContainer.addEventListener("lgInit", (event) => {
+      const pluginInstance = event.detail.instance;
+
+      const toolbar = pluginInstance.outer.find(".lg-toolbar");
+      toolbar.prepend(customButtons);
+      document
+        .getElementById("lg-toolbar-prev")
+        .addEventListener("click", () => {
+          pluginInstance.goToPrevSlide();
+        });
+      document
+        .getElementById("lg-toolbar-next")
+        .addEventListener("click", () => {
+          pluginInstance.goToNextSlide();
+        });
+    });
+
+    lightGallery(galleryContainer, {
+      speed: 500,
+      controls: true,
+      download: false,
+      thumbnail: true,
+      plugins: [lgThumbnail],
+    });
+  </script>
+</html>
